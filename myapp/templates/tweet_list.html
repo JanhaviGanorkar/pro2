@@ -11,8 +11,10 @@
             <img src="{{ tweet.photo.url }}" alt="Tweet Image">
             <h5>{{ tweet.user.username }}</h5>
             <p>{{ tweet.text }}</p>
+            {% if tweet.user == user %}
             <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary mb-6">Edit</a> <br>
             <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-primary ">Delete</a>
+            {% endif %}
         </div>
         {% endfor %}
     </div>
