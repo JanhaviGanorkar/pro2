@@ -3,15 +3,21 @@
 {% block title %}My Website{% endblock %}
 
 {% block content %}
-
     <h1>Welcome to my website!</h1>
     <p>This is a child template.</p>
     <div class="card" style="width: 18rem;">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{tasks.tasks}}</h5>
-          {% comment %} <p class="card-text">{{}}</p> {% endcomment %}
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
+        {% for task in tasks %}
+            {% if task.img %}
+                <img src="{{ task.img.url }}" class="card-img-top" alt="{{ task.title }}">
+            {% else %}
+                <p>No image available</p>
+            {% endif %}
+        
+            <div class="card-body">
+                <h5 class="card-title">{{ task.title }}</h5>
+                <p class="card-text">{{ task.status }}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+            {% endfor %}
+          </div>
 {% endblock %}

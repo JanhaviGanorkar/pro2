@@ -4,11 +4,12 @@ from django.contrib.auth.models import User
 from django.db import models
 
 class Task(models.Model):
-    task = models.CharField(max_length=200)
+    title = models.CharField(max_length=200)
     status = models.CharField(max_length=20, default="Pending")
+    img = models.ImageField(upload_to='photos/', blank=True, null=True)
 
     def __str__(self):
-        return f"{self.task} {self.status}"
+        return f"{self.title} {self.status}"
 class Tweet(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField(max_length=1000)

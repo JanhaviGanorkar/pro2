@@ -1,5 +1,6 @@
 from django import forms
 from .models import Tweet
+from .models import Task
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 class TweetForm(forms.ModelForm):
