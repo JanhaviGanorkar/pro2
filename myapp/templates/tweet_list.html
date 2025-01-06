@@ -3,19 +3,52 @@
 {% block title %}My Website{% endblock %}
 
 {% block content %}
-    <h1 class="text-center">Welcome to my website!</h1>
-    <a class="btn btn-primary" href="{% url 'tweet_create' %}">Create a tweet</a>
-    <div class="container row gap-3">
-        {% for tweet in tweets %}
-        <div class="card">
-            <img src="{{ tweet.photo.url }}" alt="Tweet Image">
-            <h5>{{ tweet.user.username }}</h5>
-            <p>{{ tweet.text }}</p>
-            {% if tweet.user == user %}
-            <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary mb-6">Edit</a> <br>
-            <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-primary ">Delete</a>
-            {% endif %}
-        </div>
-        {% endfor %}
+<div class="container my-5">
+
+    <!-- Page Title -->
+    <h1 class="text-center text-primary mb-4">Welcome to My Website!</h1>
+
+    <!-- Create Tweet Button -->
+    <div class="text-center mb-4">
+        <a class="btn btn-success btn-lg shadow-sm" href="{% url 'tweet_create' %}">Create a Tweet</a>
     </div>
+
+    <!-- Tweets Section -->
+    <div class="row g-4">
+        {% if tweets %}
+            {% for tweet in tweets %}
+                <div class="col-md-4"> <!-- Responsive grid column -->
+                    <div class="card h-100 shadow-sm border-0">
+                        
+                        <!-- Tweet Image -->
+                        {% if tweet.photo %}
+                            <img src="{{ tweet.photo.url }}" class="card-img-top img-fluid" alt="Tweet Image" style="height: 200px; object-fit: cover;">
+                        {% endif %}
+
+                        <!-- Tweet Body -->
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">{{ tweet.user.username }}</h5>
+                            <p class="card-text text-muted">{{ tweet.text }}</p>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        {% if tweet.user == user %}
+                            <div class=" d-flex ">
+                                <a href="{% url 'tweet_edit' tweet.id %}" class="btn btn-primary me-2 btn-sm">Edit</a>
+                                <a href="{% url 'tweet_delete' tweet.id %}" class="btn btn-danger btn-sm">Delete</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <!-- Fallback if No Tweets Available -->
+            <div class="text-center text-muted">
+                <i class="bi bi-plus-circle display-4"></i> <!-- Bootstrap Icons -->
+                <h2>No Tweets Available</h2>
+            </div>
+        {% endif %}
+    </div>
+
+</div>
 {% endblock %}

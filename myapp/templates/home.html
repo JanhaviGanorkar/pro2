@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <title>A Place Where Bonds Are Formed</title>
+</head>
+<body data-bs-theme="dark" class="text-light">
+
+    <!-- Main Content Section -->
+    <div class="container text-center py-5">
+        <div class="mb-4">
+            <!-- Logo -->
+            {% comment %} <img src="/media/logo.png" alt=""> {% endcomment %}
+            <img src="/media/logo.png" alt="Logo" class="img-fluid rounded" style="max-width: 200px;">
+        </div>
+
+        <!-- Icon and Heading -->
+        <box-icon name="network-chart" size="lg" class="text-primary mb-3"></box-icon>
+        <h1 class="fw-bold display-3">Connectify: Let's Connect</h1>
+        <p class="lead mt-3">A platform to build stronger bonds and connections with your community.</p>
+    </div>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-uqJSMaBgSwAKy4E5KCUUCrwuUu5VlM59x3oIg0G+DL9twH/tqVf5pYFIEccADkMn" crossorigin="anonymous"></script>
+</body>
+</html>

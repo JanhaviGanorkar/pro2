@@ -3,21 +3,45 @@
 {% block title %}My Website{% endblock %}
 
 {% block content %}
-    <h1>Welcome to my website!</h1>
-    <p>This is a child template.</p>
-    <div class="card" style="width: 18rem;">
+<div data-bs-theme="dark" class="container my-5">
+
+    <h1 class="text-center text-light mb-4">Welcome to My Website!</h1>
+    <p class="text-center text-muted">Explore the tasks and enjoy a visually rich experience.</p>
+    
+    <div class="row g-4">
         {% for task in tasks %}
-            {% if task.img %}
-                <img src="{{ task.img.url }}" class="card-img-top" alt="{{ task.title }}">
-            {% else %}
-                <p>No image available</p>
-            {% endif %}
-        
-            <div class="card-body">
-                <h5 class="card-title">{{ task.title }}</h5>
-                <p class="card-text">{{ task.status }}</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="col-md-4">
+            <div class="card shadow-lg h-100" style="transition: transform 0.3s, box-shadow 0.3s;">
+                {% if task.img %}
+                <img src="{{ task.img.url }}" class="card-img-top img-fluid" alt="{{ task.title }}" style="max-height: 200px; object-fit: cover;">
+                {% else %}
+                <div class="d-flex align-items-center justify-content-center bg-secondary text-light" style="height: 200px;">
+                    <p class="mb-0">No Image Available</p>
+                </div>
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ task.title }}</h5>
+                    <p class="card-text">{{ task.status }}</p>
+                    <a href="#" class="btn btn-primary btn-sm">Go to the Post</a>
+                </div>
             </div>
-            {% endfor %}
-          </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+<!-- Additional CSS for animations -->
+<style>
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    transform: translateY(-3px);
+    transition: 0.2s ease-in-out;
+}
+</style>
 {% endblock %}
